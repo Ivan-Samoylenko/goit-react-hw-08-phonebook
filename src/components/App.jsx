@@ -1,16 +1,17 @@
-import { ContactForm } from 'components/ContactForm';
-import { Filter } from 'components/Filter';
-import { ContactList } from 'components/ContactList';
+import { Routes, Route } from 'react-router-dom';
 
-export function App() {
+import { SharedLayout } from 'components';
+import { Contacts, Register, Login } from 'pages';
+
+export default function App() {
   return (
-    <>
-      <h1>Phonebook</h1>
-      <ContactForm />
-
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
-    </>
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<div>Home</div>} />
+        <Route path="contacts" element={<Contacts />} />
+        <Route path="register" element={<Register />} />
+        <Route path="login" element={<Login />} />
+      </Route>
+    </Routes>
   );
 }

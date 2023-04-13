@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
 
-export const Contact = ({ contact }) => {
+export default function Contact({ contact }) {
   const dispatch = useDispatch();
   const { name, phone, id } = contact;
 
@@ -22,7 +22,7 @@ export const Contact = ({ contact }) => {
       </DeleteBtn>
     </>
   );
-};
+}
 
 Contact.propTypes = {
   contact: PropTypes.exact({

@@ -1,5 +1,5 @@
 import { Contacts, ContactsItem, Text } from './ContactList.styled';
-import { Contact } from 'components/Contact';
+import { Contact } from 'components';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectContacts,
@@ -10,7 +10,7 @@ import {
 import { fetchContacts } from 'redux/operations';
 import { useEffect } from 'react';
 
-export const ContactList = () => {
+export default function ContactList() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectContactsIsLoading);
   const error = useSelector(selectContactsError);
@@ -55,4 +55,4 @@ export const ContactList = () => {
       {isLoading && <p>Loading ...</p>}
     </>
   );
-};
+}

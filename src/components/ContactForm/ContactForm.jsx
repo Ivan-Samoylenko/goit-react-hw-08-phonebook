@@ -15,7 +15,7 @@ async function createNewContact(name, phone) {
   }
 }
 
-export function ContactForm() {
+export default function ContactForm() {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
 
