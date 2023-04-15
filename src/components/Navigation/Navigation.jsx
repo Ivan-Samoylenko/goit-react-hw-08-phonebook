@@ -5,6 +5,9 @@ export default function Navigation() {
     <nav>
       <List>
         <li>
+          <ListLink to="/">Home</ListLink>
+        </li>
+        <li>
           <ListLink to="contacts">Contacts</ListLink>
         </li>
         <li>

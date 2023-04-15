@@ -11,4 +11,7 @@ export const Wrapper = styled.header`
   justify-content: space-between;
 
   background-color: #ff8;
+
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
 `;
