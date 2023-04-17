@@ -5,19 +5,33 @@ import {
   Field,
   SubmitBtn,
 } from './RegistrationForm.styled';
-// import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
+import { useInput } from 'hooks';
+import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/operations';
 
 export default function RegistrationForm() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const name = useInput();
+  const email = useInput();
+  const password = useInput();
+
   function handleSubmit(e) {
     e.preventDefault();
 
-    const form = e.target;
+    dispatch(
+      register({
+        name: name.value,
+        email: email.value,
+        password: password.value,
+      })
+    );
 
-    return {
-      name: form.elements.name.value,
-      email: form.elements.email.value,
-      password: form.elements.password.value,
-    };
+    name.reset();
+    email.reset();
+    password.reset();
+    navigate('/', { replace: true });
   }
 
   return (
@@ -25,15 +39,30 @@ export default function RegistrationForm() {
       <Form onSubmit={handleSubmit}>
         <FieldWrapper>
           Name
-          <Field type="text" name="name" />
+          <Field
+            type="text"
+            name="name"
+            value={name.value}
+            onChange={name.onChange}
+          />
         </FieldWrapper>
         <FieldWrapper>
           Email
-          <Field type="text" name="email" />
+          <Field
+            type="text"
+            name="email"
+            value={email.value}
+            onChange={email.onChange}
+          />
         </FieldWrapper>
         <FieldWrapper>
           Password
-          <Field type="text" name="password" />
+          <Field
+            type="password"
+            name="password"
+            value={password.value}
+            onChange={password.onChange}
+          />
         </FieldWrapper>
         <SubmitBtn type="submit">
           <TiUserAddOutline />

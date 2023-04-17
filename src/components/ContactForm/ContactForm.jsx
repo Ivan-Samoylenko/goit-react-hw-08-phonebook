@@ -2,13 +2,13 @@ import { TiDocumentAdd } from 'react-icons/ti';
 import { Form, FieldWrapper, Field, SubmitBtn } from './ContactForm.styled';
 import { toast } from 'react-toastify';
 import { contactsFormValidate } from 'constants';
-import { useSelector, useDispatch } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations';
+import { useDispatch } from 'react-redux';
+import { useContacts } from 'hooks';
+import { addContact } from 'redux/contacts/operations';
 
-async function createNewContact(name, phone) {
+async function createNewContact(name, number) {
   try {
-    return await contactsFormValidate.validate({ name, phone });
+    return await contactsFormValidate.validate({ name, number });
   } catch (error) {
     toast.error(error.message);
     return null;
@@ -17,7 +17,7 @@ async function createNewContact(name, phone) {
 
 export default function ContactForm() {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
+  const { contacts } = useContacts();
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -34,9 +34,9 @@ export default function ContactForm() {
       return;
     }
 
-    const phone = form.elements.number.value;
+    const number = form.elements.number.value;
 
-    const newContact = await createNewContact(name, phone);
+    const newContact = await createNewContact(name, number);
 
     if (newContact) {
       dispatch(addContact(newContact));
@@ -51,7 +51,7 @@ export default function ContactForm() {
         <Field type="text" name="name" />
       </FieldWrapper>
       <FieldWrapper>
-        Phone
+        number
         <Field type="tel" name="number" />
       </FieldWrapper>
       <SubmitBtn type="submit">

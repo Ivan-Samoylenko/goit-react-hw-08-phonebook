@@ -1,24 +1,16 @@
-import { Contacts, ContactsItem, Text } from './ContactList.styled';
-import { Contact } from 'components';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-  selectContacts,
-  selectContactsIsLoading,
-  selectContactsError,
-  selectFilter,
-} from 'redux/selectors';
-import { fetchContacts } from 'redux/operations';
 import { useEffect } from 'react';
+import { Contact } from 'components';
+import { Contacts, ContactsItem, Text } from './ContactList.styled';
+// redux
+import { useSelector, useDispatch } from 'react-redux';
+import { useContacts } from 'hooks';
+import { selectFilter } from 'redux/filter/selectors';
+import { fetchContacts } from 'redux/contacts/operations';
 
 export default function ContactList() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectContactsIsLoading);
-  const error = useSelector(selectContactsError);
-  const contacts = useSelector(selectContacts);
   const filter = useSelector(selectFilter);
-  const filteredContacts = contacts?.filter(contact =>
-    contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
+  const { contacts, visibleContacts, isLoading, error } = useContacts();
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -32,18 +24,18 @@ export default function ContactList() {
           <p>Reload App please</p>
         </>
       )}
-      {!isLoading && !error && contacts?.length === 0 && (
+      {!isLoading && !error && contacts.length === 0 && (
         <Text>There are no contacts here yet. add your first contact.</Text>
       )}
       {!isLoading &&
         !error &&
-        contacts?.length !== 0 &&
-        filteredContacts.length === 0 && (
+        contacts.length !== 0 &&
+        visibleContacts.length === 0 && (
           <Text> there are no matches with the "{filter}"</Text>
         )}
-      {!error && filteredContacts?.length !== 0 && (
+      {!error && visibleContacts.length !== 0 && (
         <Contacts>
-          {filteredContacts.map(contact => {
+          {visibleContacts.map(contact => {
             return (
               <ContactsItem key={contact.id}>
                 <Contact contact={contact} />

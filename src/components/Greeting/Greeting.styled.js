@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Text = styled.p`
   color: ${getTextColor()};
@@ -11,3 +12,18 @@ function getTextColor() {
 
   return `rgb(${red},${green},${blue})`;
 }
+
+export const StyledLink = styled(Link)`
+  font-weight: 700;
+
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+
+  &:active {
+    color: #ff0000;
+  }
+`;
