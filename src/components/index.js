@@ -9,3 +9,5 @@ export { default as Navigation } from './Navigation/Navigation';
 export { default as RegistrationForm } from './RegistrationForm/RegistrationForm';
 export { default as SharedLayout } from './SharedLayout/SharedLayout';
 export { default as UserMenu } from './UserMenu/UserMenu';
+export { default as PrivateRoute } from './PrivateRoute';
+export { default as RestrictedRoute } from './RestrictedRoute';

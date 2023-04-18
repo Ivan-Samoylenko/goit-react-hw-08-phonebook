@@ -10,12 +10,11 @@ export default function Navigation() {
         <li>
           <ListLink to="/">Home</ListLink>
         </li>
-        {isLoggedIn && (
+        {isLoggedIn ? (
           <li>
             <ListLink to="contacts">Contacts</ListLink>
           </li>
-        )}
-        {!isLoggedIn && (
+        ) : (
           <>
             <li>
               <ListLink to="register">Register</ListLink>

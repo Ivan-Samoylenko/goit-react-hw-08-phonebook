@@ -1,12 +1,10 @@
 import { TiUserOutline } from 'react-icons/ti';
 import { Form, FieldWrapper, Field, SubmitBtn } from './LoginForm.styled';
-import { useNavigate } from 'react-router-dom';
 import { useInput } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
 
 export default function LoginForm() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const email = useInput();
   const password = useInput();
@@ -23,8 +21,6 @@ export default function LoginForm() {
 
     email.reset();
     password.reset();
-
-    navigate('/', { replace: true });
   }
 
   return (

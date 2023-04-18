@@ -5,13 +5,11 @@ import {
   Field,
   SubmitBtn,
 } from './RegistrationForm.styled';
-import { useNavigate } from 'react-router-dom';
 import { useInput } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { register } from 'redux/auth/operations';
 
 export default function RegistrationForm() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const name = useInput();
   const email = useInput();
@@ -31,7 +29,6 @@ export default function RegistrationForm() {
     name.reset();
     email.reset();
     password.reset();
-    navigate('/', { replace: true });
   }
 
   return (
