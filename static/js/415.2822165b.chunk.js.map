@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/415.2822165b.chunk.js","mappings":"2MAEe,SAASA,IACtB,OACE,0BACE,SAAC,KAAD,KAGL,C","sources":["pages/Home.jsx"],"sourcesContent":["import { Greeting } from 'components';\n\nexport default function Home() {\n  return (\n    <div>\n      <Greeting />\n    </div>\n  );\n}\n"],"names":["Home"],"sourceRoot":""}

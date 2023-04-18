@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/285.a5dbc803.chunk.js","mappings":"0MAEe,SAASA,IACtB,OAAO,SAAC,KAAD,GACR,C","sources":["pages/Register.jsx"],"sourcesContent":["import { RegistrationForm } from 'components';\n\nexport default function Register() {\n  return <RegistrationForm />;\n}\n"],"names":["Register"],"sourceRoot":""}
