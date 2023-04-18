@@ -1,8 +1,8 @@
 import { lazy, useEffect } from 'react';
+import { useAuth } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
 import { Routes, Route } from 'react-router-dom';
-import { useAuth } from 'hooks';
 
 import { SharedLayout, RestrictedRoute, PrivateRoute } from 'components';
 
@@ -27,7 +27,7 @@ export default function App() {
         <Route index element={<HomePage />} />
         <Route
           path="contacts"
-          element={<PrivateRoute component={ContactsPage} />}
+          element={<PrivateRoute component={ContactsPage} redirectTo={'/'} />}
         />
         <Route
           path="register"
